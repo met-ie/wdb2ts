@@ -62,19 +62,19 @@ dewPointTemperature( float temperature, float relativeHumidity );
  *
  * | code | Name           | m/s     |knop | Description                                                                                                                              |
  * |:----:|:---------------|:-------:|:---:|:-----------------------------------------------------------------------------------------------------------------------------------------|
- * |     0|Calm            |0,0-0,2  |0-1  |Røyken stiger rett opp.                                                                                                                   |
- * |     1|Light air       |0,3-1,5  |1-3  |En kan se vindretningen av røykens drift.                                                                                                 |
- * |     2|Light breeze    |1,6-3,3  |4-6  |En kan føle vinden. Bladene på trærne rører seg, vinden kan løfte små vimpler.                                                            |
- * |     3|Gentle breeze   |3,4-5,4  |7-10 |Løv og småkvister rører seg. Vinden strekker lette flagg og vimpler.                                                                      |
- * |     4|Moterate breeze |5,5-7,9  |11-16|Vinden løfter støv og løse papirer, rører på kvister og smågreine, strekker større flagg og vimpler.                                      |
- * |     5|Fresh breeze    |8,0-10,7 |17-21|Småtrær med løv begynner å svaie. På vann begynner småbølgene å toppe seg                                                                 |
- * |     6|Strong breeze   |10,8-13,8|22-27|Store greiner og mindre stammer rører seg. Det hviner i telefonledninger. Det er vanskelig å bruke paraply. En merker motstand når en går.|
- * |     7|Near gale       |13,9-17,1|28-33|Hele trær rører på seg. Det er tungt å gå mot vinden.                                                                                     |
- * |     8|Gale            |17,2-20,7|34-40|Vinden brekker kvister av trærne. Det er tungt å gå mot vinden.                                                                           |
- * |     9|Strong gale     |20,8-24,4|41-47|Hele store trær svaier og hiver. Takstein kan blåse ned.                                                                                  |
- * |    10|Storm           |24,5-28,4|48-55|Sjelden inne i landet. Trær rykkes opp med rot. Stor skade på hus.                                                                        |
- * |    11|Violetn storm   |28,5-32,6|56-63|Forekommer sjelden og følges av store ødeleggelser.                                                                                       |
- * |    12|Hurricane       |32,7-    |64-  |Forekommer meget sjelden. Uvanlig store ødeleggelser.                                                                                     |
+ * |     0|Calm            |0,0-0,2  |0-1  |Smoke rises vertically.                                                                                                                   |
+ * |     1|Light air       |0,3-1,5  |1-3  |Direction shown by smoke drift but not by wind vanes.                                                                                     |
+ * |     2|Light breeze    |1,6-3,3  |4-6  |Wind felt on face; leaves rustle; wind vane moved by wind.                                                                                |
+ * |     3|Gentle breeze   |3,4-5,4  |7-10 |Leaves and small twigs in constant motion; light flags extended.                                                                          |
+ * |     4|Moterate breeze |5,5-7,9  |11-16|Raises dust and loose paper; small branches moved.                                                                                        |
+ * |     5|Fresh breeze    |8,0-10,7 |17-21|Small trees in leaf begin to sway; crested wavelets form on inland waters.                                                                |
+ * |     6|Strong breeze   |10,8-13,8|22-27|Large branches in motion; whistling heard in telegraph wires; umbrellas used with difficulty.                                             |
+ * |     7|Near gale       |13,9-17,1|28-33|Whole trees in motion; inconvenience felt when walking against the wind.                                                                  |
+ * |     8|Gale            |17,2-20,7|34-40|Twigs break off trees; generally impedes progress.                                                                                        |
+ * |     9|Strong gale     |20,8-24,4|41-47|Slight structural damage (chimney pots and slates removed).                                                                               |
+ * |    10|Storm           |24,5-28,4|48-55|Seldom experienced inland; trees uprooted; considerable structural damage.                                                                |
+ * |    11|Violent storm   |28,5-32,6|56-63|Very rarely experienced; accompanied by widespread damage.                                                                                |
+ * |    12|Hurricane       |32,7-    |64-  |Devastation.                                                                                                                              |
  *
  * \param[in] mps The wind in meter per second.
  * \param[out] name The beaufort name in norwegian.
