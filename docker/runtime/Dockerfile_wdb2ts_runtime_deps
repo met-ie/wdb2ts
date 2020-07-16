@@ -1,0 +1,81 @@
+# Provides the runtime for wdb2ts web application
+# Tag this image as metie:wdb2ts_runtime_deps
+#
+# This makes the runtime dependencies for wdb2ts-1.3.28c and postgresql-9.6 and libpqxx-5.0.1
+#
+# Start from a centos7 image
+ARG         MYAPP_REPO=centos
+ARG         MYAPP_IMAGE=7
+ARG         MYAPP_SOURCE=$MYAPP_REPO:$MYAPP_IMAGE
+FROM        $MYAPP_SOURCE
+
+# Install the required packages
+
+# First update yum and install epel repo
+RUN            yum -y update \
+            && yum -y --enablerepo=extras install epel-release 
+
+# Install postgresql repo and disable all but pgdg96.  Then install postgresql96 along with libpqxx
+RUN            yum -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm \
+            && yum-config-manager --disable pgdg9\[0-5\] pgdg1\* \
+            && yum -y install libpqxx
+
+# Necessary runtime packages
+RUN            yum -y install \
+            boost-iostreams boost-thread boost-filesystem boost-regex \
+            boost-program-options boost-date-time boost-system boost-test
+RUN            yum -y install \
+            log4cpp libgfortran 
+RUN            yum -y install \
+            wget 
+RUN            yum -y install \
+            proj
+RUN            yum -y install \
+            httpd 
+RUN            yum -y install \
+            supervisor 
+#RUN            yum -y install \
+#            file which
+#RUN            yum -y install \
+#            libtool \
+#            xmlto \
+#RUN            yum -y install \
+#            geos \
+#            readline.x86_64 \
+#            udunits2.x86_64 \
+#            doxygen \
+#            netcdf \
+#            help2man \
+#            rsync \
+#            freetype \
+#            byacc \
+#            graphviz \
+#            bison \
+#            epel-release \
+#            udunits2.x86_64 \
+#            rsync \
+#            eccodes
+
+#COPY        deps/postgis-2.0.7-2.el7.x86_64.rpm /usr/local/src/
+#RUN         yum -y install /usr/local/src/postgis-2.0.7-2.el7.x86_64.rpm
+
+## Postgis SQL files are expected in /usr/share/pgsql/contrib
+#RUN            cd /usr/pgsql-9.6/share/contrib/ \
+#            && ln -s postgis-2.0 postgis \
+#            && cp postgis-64.sql postgis/postgis.sql
+
+# Run supervisord at loglevel debug
+RUN            sed -i 's/loglevel=info/loglevel=debug/g' /etc/supervisord.conf
+
+## Copy in the postgresql96 path
+#COPY        etc/profile.d/pgsql-96.sh /etc/profile.d/
+
+## Copy in the Harmonie tables for eccodes
+#COPY        deps/eccodes_localDefs.tgz /root
+#RUN            mkdir -p /usr/local/share/eccodes && cd /usr/local/share/eccodes \
+#            && tar zxf /root/eccodes_localDefs.tgz
+### It may be necessary to create symlinks for legacy programs seeking 'grib_api'
+##RUN            cd /usr/lib64 \
+##            && ln -s libeccodes.so.0.1 libgrib_api.so.0
+## And set environment
+#ENV         ECCODES_DEFINITION_PATH=/usr/local/share/eccodes/localDefs:/usr/share/eccodes/definitions/

@@ -1,0 +1,31 @@
+# Creates the WDB2TS point forecast api server runtime image
+#
+# This is the runtime for wdb-1.6 with postgresql-9.6 and a rebuilt postgis-2.0
+#
+# Start from the wdb2ts runtime dependencies image
+ARG         MYAPP_REPO=devel
+ARG         MYAPP_IMAGE=wdb2ts_runtime_deps
+ARG         MYAPP_SOURCE=$MYAPP_REPO:$MYAPP_IMAGE
+FROM        $MYAPP_SOURCE
+
+COPY        artifacts/ /
+COPY        etc/ /etc/
+
+# Run ldconfig to set the proper library paths.
+RUN         ldconfig
+# User apache needs access to /etc/httpd/conf/*
+RUN         chown -R root.apache /etc/httpd/conf/*
+
+# Create /var/log/wdb2ts and /usr/var/lib/metno-wdb2ts directories
+# These are needed for logging and caching.
+RUN         chown apache.apache /var/log/wdb2ts
+RUN         mkdir -p /usr/local/var/lib/metno-wdb2ts && chown apache.apache /usr/local/var/lib/metno-wdb2ts
+
+
+# 
+# Open port 80 for the httpd server
+EXPOSE      80
+
+# Start the processes
+ENTRYPOINT  ["/usr/bin/supervisord"]
+CMD         ["-n", "-c", "/etc/supervisord.conf"]

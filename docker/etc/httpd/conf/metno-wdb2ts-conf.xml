@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<wdb2ts>
+   <include file="/etc/httpd/conf/wdb2ts-conf/default-params.xml" />
+   <include file="/etc/httpd/conf/wdb2ts-conf/locationforecast.xml" />
+   <include file="/etc/httpd/conf/wdb2ts-conf/locationforecast_agri.xml" />
+</wdb2ts>

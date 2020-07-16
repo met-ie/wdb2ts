@@ -1,0 +1,34 @@
+# Author:	Conor Daly
+# Email:	conor.daly@met.ie
+#
+# Build the wdb2ts application as follows:
+# Running this README in a bash shell will do the full build and runtime.
+#
+# This is for wdb-1.3.28c with postgresql-9.6 and libpqxx-5.0.1
+#
+# DOCKERREPO=metie
+DOCKERREPO=devel
+
+########################   Dependencies   ######################################################
+# Build common dependencies
+docker build -f build/Dockerfile_wdb2ts_build_deps -t ${DOCKERREPO}:wdb2ts_build_deps --build-arg MYAPP_REPO=${DOCKERREPO} .
+
+# Now build the runtime dependencies
+docker build -f runtime/Dockerfile_wdb2ts_runtime_deps -t ${DOCKERREPO}:wdb2ts_runtime_deps --build-arg MYAPP_REPO=${DOCKERREPO} .
+################################################################################################
+
+########################   wdb2ts   ############################################################
+# Build wdb2ts application
+docker build -f build/Dockerfile_wdb2ts_build -t ${DOCKERREPO}:wdb2ts_build --build-arg MYAPP_REPO=${DOCKERREPO} .
+# Once built, run the container using build/build_wdb2ts.sh
+# This will build these sources and drop the output in ./artifacts
+build/build_wdb2ts.sh -r -a . -s ..
+
+# Build the wdb2ts api server image
+# The build folder needs to contain the built wdb2ts software copied out of the wdb2ts build image.
+docker build -f runtime/Dockerfile_wdb2ts -t ${DOCKERREPO}:wdb2ts --build-arg MYAPP_REPO=${DOCKERREPO} .
+################################################################################################
+
+# Run the wdb and wdb2ts containers on a common network with names 'wdb' and 'wdb2ts'
+docker run --rm --name wdb2ts --net wdb -p 8080:80 ${DOCKERREPO}:wdb2ts
+

@@ -1,0 +1,166 @@
+<?xml version="1.0" ?>
+<wdb2ts>
+   <paramdefs>
+      <!-- real topography -->
+      <paramdef id="TOPOGRAPHY" dataprovider="statkart.no">
+         <valueparameter name="altitude" unit="m" />
+        <!--levelparameter name="height above reference ellipsoid" unit="m" from="0" to="0" /-->
+        <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" /> 
+         <dataversion version="-1" /> 
+      </paramdef>
+      
+      <!-- model topography -->
+      <paramdef id="MODEL.TOPOGRAPHY" dataprovider="harmonie">
+         <valueparameter name="altitude" unit="m" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" /> <!-- Optional: default scale="1.0" offset="0.0" -->
+         <dataversion version="-1" /> <!-- Optional: default value="-1" -->
+      </paramdef>
+
+      <paramdef id="MODEL.TOPOGRAPHY" dataprovider="ec_test_l">
+         <valueparameter name="altitude" unit="m" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" /> <!-- Optional: default scale="1.0" offset="0.0" -->
+         <dataversion version="-1" /> <!-- Optional: default value="-1" -->
+      </paramdef>
+      
+      <paramdef id="MODEL.TOPOGRAPHY" dataprovider="ec_n1280_1hr">
+         <valueparameter name="altitude" unit="m" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" /> <!-- Optional: default scale="1.0" offset="0.0" -->
+         <dataversion version="-1" /> <!-- Optional: default value="-1" -->
+      </paramdef>
+      
+      <paramdef id="MODEL.TOPOGRAPHY" dataprovider="ec_n1280_3hr">
+         <valueparameter name="altitude" unit="m" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" /> <!-- Optional: default scale="1.0" offset="0.0" -->
+         <dataversion version="-1" /> <!-- Optional: default value="-1" -->
+      </paramdef>
+      
+      <paramdef id="MODEL.TOPOGRAPHY" dataprovider="ec_n1280_6hr">
+         <valueparameter name="altitude" unit="m" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" /> <!-- Optional: default scale="1.0" offset="0.0" -->
+         <dataversion version="-1" /> <!-- Optional: default value="-1" -->
+      </paramdef>
+      
+      <paramdef id="PRECIP.ACCUMULATED" dataprovider="">
+         <valueparameter name="precipitation amount" unit="kg/m2" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+      
+      <paramdef id="TOTAL.CLOUD" dataprovider="">
+         <valueparameter name="cloud area fraction" unit="%" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+           
+      <paramdef id="LOW.CLOUD" dataprovider="">
+         <valueparameter name="cloud area fraction in atmosphere layer" unit="%" />
+         <levelparameter name="atmosphere sigma coordinate" unit="none" from="850" to="850" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+      
+      <paramdef id="MEDIUM.CLOUD" dataprovider="">
+         <valueparameter name="cloud area fraction in atmosphere layer" unit="%" />
+         <levelparameter name="atmosphere sigma coordinate" unit="none" from="500" to="500" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+      
+      <paramdef id="HIGH.CLOUD" dataprovider="">
+         <valueparameter name="cloud area fraction in atmosphere layer" unit="%" />
+         <levelparameter name="atmosphere sigma coordinate" unit="none" from="300" to="300" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+ 
+      <paramdef id="FOG" dataprovider="">
+         <valueparameter name="cloud area fraction in atmosphere layer" unit="%" />
+         <levelparameter name="atmosphere sigma coordinate" unit="none" from="1000" to="1000" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+      
+      <paramdef id="RH.2M" dataprovider="">
+         <valueparameter name="relative humidity" unit="%" />
+         <levelparameter name="height above ground" unit="m" from="2" to="2" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+     
+      <paramdef id="T.2M" dataprovider="">
+         <valueparameter name="air temperature" unit="K" />
+         <levelparameter name="height above ground" unit="m" from="2" to="2" />
+         <value scale="1.0" offset="-273.15" />
+      </paramdef>
+     
+      <paramdef id="MSLP" dataprovider="">
+         <valueparameter name="air pressure" unit="Pa" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="0.01" offset="0.0" />
+      </paramdef>
+     
+      <paramdef id="WIND.U10M" dataprovider="">
+         <valueparameter name="x wind" unit="m/s" />
+         <levelparameter name="height above ground" unit="m" from="10" to="10" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+      
+      <paramdef id="WIND.V10M" dataprovider="">
+         <valueparameter name="y wind" unit="m/s" />
+         <levelparameter name="height above ground" unit="m" from="10" to="10" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+     
+     <paramdef id="T.DEWPOINT" dataprovider="">
+         <valueparameter name="dew point temperature" unit="K" />
+         <levelparameter name="height above ground" unit="m" from="2" to="2" />
+         <value scale="1.0" offset="-273.15" />
+      </paramdef>
+     
+      <paramdef id="globalRadiation" dataprovider="">
+         <valueparameter name="global radiation" unit="W/m2" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+     
+<!--
+	<paramdef id="areaMaxWindSpeed">
+	    <valueparameter name="global radiation" unit="W/m^2"/>
+	    <levelparameter name="height above ground" unit="m" from="0" to="0"/>
+	    <value scale="1000.0" offset="0.0"/>
+	</paramdef>
+-->
+
+      <paramdef id="THUNDER.PROBABILITY" dataprovider="">
+         <valueparameter name="thunderstorm probability" unit="%" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+     
+      <paramdef id="PRECIP.PROBABILITY" dataprovider="">
+         <valueparameter name="probability of precipitation" unit="%" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+     
+      <paramdef id="PRECIP.MIN" dataprovider="">
+         <valueparameter name="low estimate of precipitation amount" unit="kg/m2" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+      
+      <paramdef id="PRECIP.MEAN" dataprovider="">
+         <valueparameter name="middle estimate of precipitation amount" unit="kg/m2" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+
+      <paramdef id="PRECIP.MAX" dataprovider="">
+         <valueparameter name="high estimate of precipitation amount" unit="kg/m2" />
+         <levelparameter name="height above ground" unit="m" from="0" to="0" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+
+   </paramdefs>
+</wdb2ts>

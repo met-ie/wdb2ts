@@ -1,0 +1,85 @@
+# Start from a centos7 image with build dependencies installed
+#
+# This builds wdb2ts-1.3.28c against postgresql-9.6 with libpqxx-5.0.1
+#
+# Start from the wdb2ts_build_deps image
+ARG         MYAPP_REPO=devel
+ARG         MYAPP_IMAGE=wdb2ts_build_deps
+ARG         MYAPP_SOURCE=$MYAPP_REPO:$MYAPP_IMAGE
+FROM        $MYAPP_SOURCE
+
+# Set a workdir for all subsequent commands.
+WORKDIR /usr/local/src
+
+# Set a couple of environment vars pointing to /usr/local/lib64
+ENV            PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig
+ENV            LD_LIBRARY_PATH=/usr/local/lib64
+#ENV            LD_LIBRARY_PATH=/usr/local/lib64:/usr/pgsql-9.6/lib
+#ENV            PATH=$PATH:/usr/pgsql-9.6/bin
+#ENV            REPO=metno
+#ENV            REPO=dreadpirateroberts-1000
+ENV            REPO=met-ie
+
+
+
+# We need a selection of tools from Met Norway metlibs available from
+# https://github.com/met-ie/metlibs-...
+RUN            git clone https://github.com/$REPO/metlibs-puctools \
+            && cd metlibs-puctools \
+            && mkdir build \
+            && cd build \
+            && CXXFLAGS="-std=c++11" cmake3 .. \
+            && make \
+            && make install
+
+RUN            git clone https://github.com/$REPO/metlibs-putools \
+            && cd metlibs-putools \
+            && mkdir build \
+            && cd build \
+            && CXXFLAGS="-std=c++11" cmake3 .. \
+            && make \
+            && make install
+
+RUN            git clone https://github.com/$REPO/metlibs-pumet \
+            && cd metlibs-pumet \
+            && mkdir build \
+            && cd build \
+            && CXXFLAGS="-std=c++11" cmake3 .. \
+            && make \
+            && make install
+
+# We need weather_symbol from Met Norway available from
+# https://github.com/met-ie/weather_symbol
+RUN            git clone https://github.com/$REPO/weather_symbol.git \
+            && cd weather_symbol \
+            && aclocal -I m4 \
+            && libtoolize --copy --force \
+            && autoheader ; automake --add-missing --copy --foreign \
+            && autoconf \
+            && ./configure --prefix=/usr/local --libdir=/usr/local/lib64 --with-pic \
+            && make all && make install
+
+## Finally we need wdb2ts from Met Norway available from
+## https://github.com/met-ie/wdb2ts
+#RUN            git clone https://github.com/$REPO/wdb2ts.git \
+#            && cd wdb2ts \
+#            && git checkout centos7 \
+#            && ./autogen.sh \
+#            && ./configure --prefix=/usr/local --libdir=/usr/local/lib64 --with-pic  \
+#            && make all && make install \
+#            && chown -R apache.apache /usr/local/var/lib/metno-wdb2ts \
+#            && chown apache.apache /var/log/wdb2ts
+
+
+
+# Copy in the build script which acts as entrypoint.
+COPY        build/build_wdb2ts.sh /usr/local/bin
+
+VOLUME      /artifacts
+VOLUME      /src
+VOLUME      /build
+
+WORKDIR     /build
+ENTRYPOINT  ["/usr/local/bin/build_wdb2ts.sh"]
+CMD         ["--build"]
+
