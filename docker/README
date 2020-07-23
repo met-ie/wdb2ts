@@ -11,10 +11,10 @@ DOCKERREPO=devel
 
 ########################   Dependencies   ######################################################
 # Build common dependencies
-docker build -f build/Dockerfile_wdb2ts_build_deps -t ${DOCKERREPO}:wdb2ts_build_deps --build-arg MYAPP_REPO=${DOCKERREPO} .
+docker build -f build/Dockerfile_wdb2ts_build_deps -t ${DOCKERREPO}:wdb2ts_build_deps .
 
 # Now build the runtime dependencies
-docker build -f runtime/Dockerfile_wdb2ts_runtime_deps -t ${DOCKERREPO}:wdb2ts_runtime_deps --build-arg MYAPP_REPO=${DOCKERREPO} .
+docker build -f runtime/Dockerfile_wdb2ts_runtime_deps -t ${DOCKERREPO}:wdb2ts_runtime_deps .
 ################################################################################################
 
 ########################   wdb2ts   ############################################################
@@ -29,6 +29,11 @@ build/build_wdb2ts.sh -r -a . -s ..
 docker build -f runtime/Dockerfile_wdb2ts -t ${DOCKERREPO}:wdb2ts --build-arg MYAPP_REPO=${DOCKERREPO} .
 ################################################################################################
 
+# If necessary, create the docker 'wdb' network
+docker network create wdb
+
 # Run the wdb and wdb2ts containers on a common network with names 'wdb' and 'wdb2ts'
 docker run --rm --name wdb2ts --net wdb -p 8080:80 ${DOCKERREPO}:wdb2ts
 
+# Point a browser to http://localhost:8080/metno-wdb2ts/locationforecast?lat=53.3987454167&long=-6.1273873444
+# If no output, try http://localhost:8080/metno-wdb2ts/locationforecastupdate first.

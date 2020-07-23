@@ -1,5 +1,11 @@
 wdb2ts (1.3.28c) centos 7; urgency=low
 
+  * Corrected docker build instructions
+
+ -- Conor Daly <conor.daly@met.ie>  Wed, 23 Jul 2020 10:27:00
+
+wdb2ts (1.3.28c) centos 7; urgency=low
+
   * Added docker build environment
 
  -- Conor Daly <conor.daly@met.ie>  Wed, 10 Jun 2020 17:27:00
