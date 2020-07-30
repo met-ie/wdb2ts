@@ -242,6 +242,58 @@ output( std::ostream &out, const std::string &indent )
 		}
 	}
 
+	value = pd->windS10m( true );
+	if( value != FLT_MAX )
+		tmpout << indent << "<windSpeed_level id=\"ff_level_10\" metresAboveSurface=\"10\" mps=\""
+				    << value << "\" " << "beaufort=\""
+				    << toBeaufort( value, description ) << "\" " << "name=\""
+				    << description << "\"/>\n";
+
+	value = pd->windD10m( true );
+	if( value != FLT_MAX )
+		tmpout << indent << "<windDirection_level id=\"dd_level_10\" metresAboveSurface=\"10\" deg=\""
+				    << value << "\" " << "name=\"" << windDirectionName( value )
+				    << "\"/>\n";
+
+	value = pd->windS50m( true );
+	if( value != FLT_MAX )
+		tmpout << indent << "<windSpeed_level id=\"ff_level_50\" metresAboveSurface=\"50\" mps=\""
+				    << value << "\" " << "beaufort=\""
+				    << toBeaufort( value, description ) << "\" " << "name=\""
+				    << description << "\"/>\n";
+
+	value = pd->windD50m( true );
+	if( value != FLT_MAX )
+		tmpout << indent << "<windDirection_level id=\"dd_level_50\" metresAboveSurface=\"50\" deg=\""
+				    << value << "\" " << "name=\"" << windDirectionName( value )
+				    << "\"/>\n";
+
+	value = pd->windS100m( true );
+	if( value != FLT_MAX )
+		tmpout << indent << "<windSpeed_level id=\"ff_level_100\" metresAboveSurface=\"100\" mps=\""
+				    << value << "\" " << "beaufort=\""
+				    << toBeaufort( value, description ) << "\" " << "name=\""
+				    << description << "\"/>\n";
+
+	value = pd->windD100m( true );
+	if( value != FLT_MAX )
+		tmpout << indent << "<windDirection_level id=\"dd_level_100\" metresAboveSurface=\"100\" deg=\""
+				    << value << "\" " << "name=\"" << windDirectionName( value )
+				    << "\"/>\n";
+
+	value = pd->windS300m( true );
+	if( value != FLT_MAX )
+		tmpout << indent << "<windSpeed_level id=\"ff_level_300\" metresAboveSurface=\"300\" mps=\""
+				    << value << "\" " << "beaufort=\""
+				    << toBeaufort( value, description ) << "\" " << "name=\""
+				    << description << "\"/>\n";
+
+	value = pd->windD300m( true );
+	if( value != FLT_MAX )
+		tmpout << indent << "<windDirection_level id=\"dd_level_300\" metresAboveSurface=\"300\" deg=\""
+				    << value << "\" " << "name=\"" << windDirectionName( value )
+				    << "\"/>\n";
+
 	value = pd->windGust( true );
 	if( value != FLT_MAX )
 		tmpout << indent << "<windGust id=\"ff_gust\" mps=\"" << value << "\"/>\n";

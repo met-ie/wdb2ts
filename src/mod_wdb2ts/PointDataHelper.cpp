@@ -96,6 +96,22 @@ void PData::merge( const PData &other )
 		windU10m = other.windU10m;
 	if( other.windGust != FLT_MAX )
 		windGust = other.windGust;
+	if( other.windS10m != FLT_MAX )
+		windS10m = other.windS10m;
+	if( other.windD10m != FLT_MAX )
+		windD10m = other.windD10m;
+	if( other.windS50m != FLT_MAX )
+		windS50m = other.windS50m;
+	if( other.windD50m != FLT_MAX )
+		windD50m = other.windD50m;
+	if( other.windS100m != FLT_MAX )
+		windS100m = other.windS100m;
+	if( other.windD100m != FLT_MAX )
+		windD100m = other.windD100m;
+	if( other.windS300m != FLT_MAX )
+		windS300m = other.windS300m;
+	if( other.windD300m != FLT_MAX )
+		windD300m = other.windD300m;
 	if( other.areaMaxWindSpeed != FLT_MAX )
 		areaMaxWindSpeed = other.areaMaxWindSpeed;
 	if( other.globalRadiation != FLT_MAX )
@@ -261,6 +277,22 @@ void PData::print( std::ostream &o, const std::string &space ) const
 		o << space << "windU10m: " << windU10m << endl;
 	if( windGust != FLT_MAX )
 		o << space << "windGust: " << windGust << endl;
+	if( windS10m != FLT_MAX )
+		o << space << "windS10m: " << windS10m << endl;
+	if( windD10m != FLT_MAX )
+		o << space << "windD10m: " << windD10m << endl;
+	if( windS50m != FLT_MAX )
+		o << space << "windS50m: " << windS50m << endl;
+	if( windD50m != FLT_MAX )
+		o << space << "windD50m: " << windD50m << endl;
+	if( windS100m != FLT_MAX )
+		o << space << "windS100m: " << windS100m << endl;
+	if( windD100m != FLT_MAX )
+		o << space << "windD100m: " << windD100m << endl;
+	if( windS300m != FLT_MAX )
+		o << space << "windS300m: " << windS300m << endl;
+	if( windD300m != FLT_MAX )
+		o << space << "windD300m: " << windD300m << endl;
 	if( areaMaxWindSpeed != FLT_MAX )
 		o << space << "areaMaxWindSpeed: " << areaMaxWindSpeed << endl;
 	if( globalRadiation != FLT_MAX )
@@ -439,6 +471,22 @@ int PData::count() const
 	if( windU10m != FLT_MAX )
 		++n;
 	if( windGust != FLT_MAX )
+		++n;
+	if( windS10m != FLT_MAX )
+		++n;
+	if( windD10m != FLT_MAX )
+		++n;
+	if( windS50m != FLT_MAX )
+		++n;
+	if( windD50m != FLT_MAX )
+		++n;
+	if( windS100m != FLT_MAX )
+		++n;
+	if( windD100m != FLT_MAX )
+		++n;
+	if( windS300m != FLT_MAX )
+		++n;
+	if( windD300m != FLT_MAX )
 		++n;
 	if( areaMaxWindSpeed != FLT_MAX )
 		++n;
@@ -776,6 +824,22 @@ void decodePData( const ParamDefList &paramDefs, const ProviderList &providers,
 				pd.windV10m = value;
 			else if( paramDef->alias() == "WIND.GUST" )
 				pd.windGust = value;
+			else if( paramDef->alias() == "WIND.S10M" )
+				pd.windS10m = value;
+			else if( paramDef->alias() == "WIND.D10M" )
+				pd.windD10m = value;
+			else if( paramDef->alias() == "WIND.S50M" )
+				pd.windS50m = value;
+			else if( paramDef->alias() == "WIND.D50M" )
+				pd.windD50m = value;
+			else if( paramDef->alias() == "WIND.S100M" )
+				pd.windS100m = value;
+			else if( paramDef->alias() == "WIND.D100M" )
+				pd.windD100m = value;
+			else if( paramDef->alias() == "WIND.S300M" )
+				pd.windS300m = value;
+			else if( paramDef->alias() == "WIND.D300M" )
+				pd.windD300m = value;
 			else if( paramDef->alias() == "areaMaxWindSpeed" )
 				pd.areaMaxWindSpeed = value;
 			else if( paramDef->alias() == "globalRadiation" )
@@ -1124,6 +1188,22 @@ void decodePData( const ParamDefList &paramDefs, const ProviderList &providers,
 				pd.windV10m = value;
 			else if( paramDef->alias() == "WIND.GUST" )
 				pd.windGust = value;
+			else if( paramDef->alias() == "WIND.S10M" )
+				pd.windS10m = value;
+			else if( paramDef->alias() == "WIND.D10M" )
+				pd.windD10m = value;
+			else if( paramDef->alias() == "WIND.S50M" )
+				pd.windS50m = value;
+			else if( paramDef->alias() == "WIND.D50M" )
+				pd.windD50m = value;
+			else if( paramDef->alias() == "WIND.S100M" )
+				pd.windS100m = value;
+			else if( paramDef->alias() == "WIND.D100M" )
+				pd.windD100m = value;
+			else if( paramDef->alias() == "WIND.S300M" )
+				pd.windS300m = value;
+			else if( paramDef->alias() == "WIND.D300M" )
+				pd.windD300m = value;
 			else if( paramDef->alias() == "areaMaxWindSpeed" )
 				pd.areaMaxWindSpeed = value;
 			else if( paramDef->alias() == "globalRadiation" )
@@ -1326,6 +1406,22 @@ bool SetPDataHelper::init( const std::string &param )
 		pPM = &PData::windV10m;
 	else if( param == "WIND.GUST" )
 		pPM = &PData::windGust;
+	else if( param == "WIND.S10M" )
+		pPM = &PData::windS10m;
+	else if( param == "WIND.D10M" )
+		pPM = &PData::windD10m;
+	else if( param == "WIND.S50M" )
+		pPM = &PData::windS50m;
+	else if( param == "WIND.D50M" )
+		pPM = &PData::windD50m;
+	else if( param == "WIND.S100M" )
+		pPM = &PData::windS100m;
+	else if( param == "WIND.D100M" )
+		pPM = &PData::windD100m;
+	else if( param == "WIND.S300M" )
+		pPM = &PData::windS300m;
+	else if( param == "WIND.D300M" )
+		pPM = &PData::windD300m;
 	else if( param == "areaMaxWindSpeed" )
 		pPM = &PData::areaMaxWindSpeed;
 	else if( param == "globalRadiation" )

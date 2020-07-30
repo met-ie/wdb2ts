@@ -274,6 +274,111 @@ windGust(bool tryHard)const
 			           const_cast<ptime&>(itTimeSerie->first),
 			           const_cast<string&>(forecastProvider), FLT_MAX, tryHard );
 }
+
+float 
+LocationElem::
+windS10m(bool tryHard)const
+{
+	   WEBFW_USE_LOGGER( "encode" );
+	float value = getValue( &PData::windS10m, 
+			           itTimeSerie->second,			 
+			           const_cast<ptime&>(itTimeSerie->first), 
+			           const_cast<string&>(forecastProvider), FLT_MAX, tryHard );
+	WEBFW_LOG_DEBUG( "LocationElem::windSpeed_10m: " << value << (value==FLT_MAX?"  N/A":"") );
+	return value;
+}
+
+float 
+LocationElem::
+windD10m(bool tryHard)const
+{
+	   WEBFW_USE_LOGGER( "encode" );
+	float value = getValue( &PData::windD10m, 
+			           itTimeSerie->second,			 
+			           const_cast<ptime&>(itTimeSerie->first), 
+			           const_cast<string&>(forecastProvider), FLT_MAX, tryHard );
+	WEBFW_LOG_DEBUG( "LocationElem::windDirection_10m: " << value << (value==FLT_MAX?"  N/A":"") );
+	return value;
+}
+
+float 
+LocationElem::
+windS50m(bool tryHard)const
+{
+	   WEBFW_USE_LOGGER( "encode" );
+	float value = getValue( &PData::windS50m, 
+			           itTimeSerie->second,			 
+			           const_cast<ptime&>(itTimeSerie->first), 
+			           const_cast<string&>(forecastProvider), FLT_MAX, tryHard );
+	WEBFW_LOG_DEBUG( "LocationElem::windSpeed_50m: " << value << (value==FLT_MAX?"  N/A":"") );
+	return value;
+}
+
+float 
+LocationElem::
+windD50m(bool tryHard)const
+{
+	   WEBFW_USE_LOGGER( "encode" );
+	float value = getValue( &PData::windD50m, 
+			           itTimeSerie->second,			 
+			           const_cast<ptime&>(itTimeSerie->first), 
+			           const_cast<string&>(forecastProvider), FLT_MAX, tryHard );
+	WEBFW_LOG_DEBUG( "LocationElem::windDirection_50m: " << value << (value==FLT_MAX?"  N/A":"") );
+	return value;
+}
+
+float 
+LocationElem::
+windS100m(bool tryHard)const
+{
+	   WEBFW_USE_LOGGER( "encode" );
+	float value = getValue( &PData::windS100m, 
+			           itTimeSerie->second,			 
+			           const_cast<ptime&>(itTimeSerie->first), 
+			           const_cast<string&>(forecastProvider), FLT_MAX, tryHard );
+	WEBFW_LOG_DEBUG( "LocationElem::windSpeed_100m: " << value << (value==FLT_MAX?"  N/A":"") );
+	return value;
+}
+
+float 
+LocationElem::
+windD100m(bool tryHard)const
+{
+	   WEBFW_USE_LOGGER( "encode" );
+	float value = getValue( &PData::windD100m, 
+			           itTimeSerie->second,			 
+			           const_cast<ptime&>(itTimeSerie->first), 
+			           const_cast<string&>(forecastProvider), FLT_MAX, tryHard );
+	WEBFW_LOG_DEBUG( "LocationElem::windDirection_100m: " << value << (value==FLT_MAX?"  N/A":"") );
+	return value;
+}
+
+float 
+LocationElem::
+windS300m(bool tryHard)const
+{
+	   WEBFW_USE_LOGGER( "encode" );
+	float value = getValue( &PData::windS300m, 
+			           itTimeSerie->second,			 
+			           const_cast<ptime&>(itTimeSerie->first), 
+			           const_cast<string&>(forecastProvider), FLT_MAX, tryHard );
+	WEBFW_LOG_DEBUG( "LocationElem::windSpeed_300m: " << value << (value==FLT_MAX?"  N/A":"") );
+	return value;
+}
+
+float 
+LocationElem::
+windD300m(bool tryHard)const
+{
+	   WEBFW_USE_LOGGER( "encode" );
+	float value = getValue( &PData::windD300m, 
+			           itTimeSerie->second,			 
+			           const_cast<ptime&>(itTimeSerie->first), 
+			           const_cast<string&>(forecastProvider), FLT_MAX, tryHard );
+	WEBFW_LOG_DEBUG( "LocationElem::windDirection_300m: " << value << (value==FLT_MAX?"  N/A":"") );
+	return value;
+}
+
 float
 LocationElem::
 areaMaxWindSpeed( bool tryHard )const{

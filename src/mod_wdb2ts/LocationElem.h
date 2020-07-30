@@ -358,6 +358,14 @@ public:
 	float windV10m( bool tryHard=false )const;
    float windU10m( bool tryHard=false )const;
    float windGust( bool tryHard=false )const;
+   float windS10m( bool tryHard=false )const;
+   float windD10m( bool tryHard=false )const;
+   float windS50m( bool tryHard=false )const;
+   float windD50m( bool tryHard=false )const;
+   float windS100m( bool tryHard=false )const;
+   float windD100m( bool tryHard=false )const;
+   float windS300m( bool tryHard=false )const;
+   float windD300m( bool tryHard=false )const;
    float areaMaxWindSpeed( bool tryHard=false )const;
    float globalRadiation( bool tryHard=false )const;
    float PP( bool tryHard=false )const;

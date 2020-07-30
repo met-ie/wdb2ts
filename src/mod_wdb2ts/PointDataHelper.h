@@ -49,6 +49,14 @@ struct PData{
    float windV10m;
    float windU10m;
    float windGust;
+   float windS10m;
+   float windD10m;
+   float windS50m;
+   float windD50m;
+   float windS100m;
+   float windD100m;
+   float windS300m;
+   float windD300m;
    float areaMaxWindSpeed;
    float globalRadiation;
    float PP;
@@ -128,7 +136,12 @@ struct PData{
    float LANDCOVER;
    
    PData()
-   	:windV10m( FLT_MAX ), windU10m( FLT_MAX ), windGust(FLT_MAX),areaMaxWindSpeed(FLT_MAX),
+   	:windV10m( FLT_MAX ), windU10m( FLT_MAX ), 
+   	 windS10m( FLT_MAX ), windD10m( FLT_MAX ), 
+   	 windS50m( FLT_MAX ), windD50m( FLT_MAX ), 
+   	 windS100m( FLT_MAX ), windD100m( FLT_MAX ), 
+   	 windS300m( FLT_MAX ), windD300m( FLT_MAX ), 
+	         windGust(FLT_MAX),areaMaxWindSpeed(FLT_MAX),
 		 globalRadiation(FLT_MAX),PP( FLT_MAX ), PR( FLT_MAX ),
    	 TA( FLT_MAX ), T2M( FLT_MAX ), T2M_LAND( FLT_MAX ),
 		 T2M_NO_ADIABATIC_HIGHT_CORRECTION(FLT_MAX),
@@ -185,7 +198,12 @@ struct PData{
    	LANDCOVER( FLT_MAX ){}
    
    PData(const PData &pd)
-      :windV10m(pd.windV10m), windU10m(pd.windU10m), windGust(pd.windGust),
+      :windV10m(pd.windV10m), windU10m(pd.windU10m),
+       windS10m(pd.windS10m), windD10m(pd.windD10m),
+       windS50m(pd.windS50m), windD50m(pd.windD50m),
+       windS100m(pd.windS100m), windD100m(pd.windD100m),
+       windS300m(pd.windS300m), windD300m(pd.windD300m),
+                 windGust(pd.windGust),
 		 areaMaxWindSpeed(pd.areaMaxWindSpeed),
 		 globalRadiation(pd.globalRadiation),
        PP(pd.PP), PR(pd.PR), TA(pd.TA), T2M(pd.T2M), 
@@ -251,6 +269,14 @@ struct PData{
       	windV10m = rhs.windV10m;
       	windU10m = rhs.windU10m;
          windGust = rhs.windGust;
+      	 windS10m = rhs.windS10m;
+      	 windD10m = rhs.windD10m;
+      	 windS50m = rhs.windS50m;
+      	 windD50m = rhs.windD50m;
+      	 windS100m = rhs.windS100m;
+      	 windD100m = rhs.windD100m;
+      	 windS300m = rhs.windS300m;
+      	 windD300m = rhs.windD300m;
          areaMaxWindSpeed = rhs.areaMaxWindSpeed;
          globalRadiation = rhs.globalRadiation;
          PP       = rhs.PP;
