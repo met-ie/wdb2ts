@@ -112,6 +112,54 @@
          <value scale="1.0" offset="0.0" />
       </paramdef>
      
+      <paramdef id="WIND.S10M" dataprovider="">
+         <valueparameter name="wind speed" unit="m/s" />
+         <levelparameter name="height above ground" unit="m" from="10" to="10" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+      
+      <paramdef id="WIND.D10M" dataprovider="">
+         <valueparameter name="wind direction" unit="degrees" />
+         <levelparameter name="height above ground" unit="m" from="10" to="10" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+     
+      <paramdef id="WIND.S50M" dataprovider="">
+         <valueparameter name="wind speed" unit="m/s" />
+         <levelparameter name="height above ground" unit="m" from="50" to="50" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+      
+      <paramdef id="WIND.D50M" dataprovider="">
+         <valueparameter name="wind direction" unit="degrees" />
+         <levelparameter name="height above ground" unit="m" from="50" to="50" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+     
+      <paramdef id="WIND.S100M" dataprovider="">
+         <valueparameter name="wind speed" unit="m/s" />
+         <levelparameter name="height above ground" unit="m" from="100" to="100" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+      
+      <paramdef id="WIND.D100M" dataprovider="">
+         <valueparameter name="wind direction" unit="degrees" />
+         <levelparameter name="height above ground" unit="m" from="100" to="100" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+     
+      <paramdef id="WIND.S300M" dataprovider="">
+         <valueparameter name="wind speed" unit="m/s" />
+         <levelparameter name="height above ground" unit="m" from="300" to="300" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+      
+      <paramdef id="WIND.D300M" dataprovider="">
+         <valueparameter name="wind direction" unit="degrees" />
+         <levelparameter name="height above ground" unit="m" from="300" to="300" />
+         <value scale="1.0" offset="0.0" />
+      </paramdef>
+     
      <paramdef id="T.DEWPOINT" dataprovider="">
          <valueparameter name="dew point temperature" unit="K" />
          <levelparameter name="height above ground" unit="m" from="2" to="2" />

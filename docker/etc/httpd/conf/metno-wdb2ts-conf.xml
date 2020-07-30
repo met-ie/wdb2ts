@@ -3,4 +3,6 @@
    <include file="/etc/httpd/conf/wdb2ts-conf/default-params.xml" />
    <include file="/etc/httpd/conf/wdb2ts-conf/locationforecast.xml" />
    <include file="/etc/httpd/conf/wdb2ts-conf/locationforecast_agri.xml" />
+   <include file="/etc/httpd/conf/wdb2ts-conf/locationforecast_energy.xml" />
+   <include file="/etc/httpd/conf/wdb2ts-conf/locationforecast_test.xml" />
 </wdb2ts>

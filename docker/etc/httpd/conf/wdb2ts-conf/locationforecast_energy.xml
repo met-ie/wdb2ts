@@ -1,0 +1,156 @@
+<?xml version="1.0" ?>
+<wdb2ts>
+   <requests>
+      
+      <request path="/locationforecastenergyupdate" default_version="1.0"
+         wdbdb="wdb" action="LocationForecastUpdate" queryid="locationforecastenergy">
+         <actionparam key="updateid" value="locationforecastenergy" />
+         <version version="1.0" action="LocationForecastUpdate" queryid="locationforecastenergy" >
+            <actionparam key="updateid" value="locationforecastenergy" />
+         </version>
+      </request>
+      
+      <request path="/locationforecastenergy" default_version="1.0"
+         wdbdb="wdb" action="LocationForecast5" queryid="locationforecastenergy"
+         schema="http://api.met.no/weatherapi/locationforecast/1.9/schema">
+
+         <actionparam key="updateid" value="locationforecastenergy" />
+<!--
+         <actionparam key="loglevels" value="default=warn;encode=debug" />
+-->
+         <actionparam key="loglevels" value="default=warn;encode=warn" />
+	<actionparam key="meta_model-harmonie" value="name=harmonie;nextrun=04:00,10:00,16:00,22:00" />
+         <actionparam key="meta_model-ec_n1280_1hr" value="name=ec_n1280_1hr;nextrun=06:00,18:00" />
+         <actionparam key="meta_model-ec_n1280_3hr" value="name=ec_n1280_3hr;nextrun=06:00,18:00" />
+         <actionparam key="meta_model-ec_n1280_6hr" value="name=ec_n1280_6hr;nextrun=06:00,18:00" />
+         <actionparam key="expire_rand" value="480" />
+         <actionparam key="provider_priority"
+                    value="harmonie;ec_n1280_1hr;ec_n1280_3hr;ec_n1280_6hr" />
+	<actionparam key="model_topo_provider-harmonie" value="harmonie" />
+         <actionparam key="model_topo_provider-ec_n1280_1hr" value="ec_n1280_1hr" />
+         <actionparam key="model_topo_provider-ec_n1280_3hr" value="ec_n1280_3hr" />
+         <actionparam key="model_topo_provider-ec_n1280_6hr" value="ec_n1280_6hr" />
+	<actionparam key="topography_provider" value="statkart.no" />
+	<actionparam key="precipitation" value="multi:1,2,3,6" />
+         <actionparam key="symbol_conf_file" value="qbSymbols.def" />
+	 <!--actionparam key="symbol_provider-harmonie" value="(1) (2) (3) (6)" /-->
+	<actionparam key="symbol_provider-harmonie" value="(0,0,1)" />
+         <!--actionparam key="symbol_provider-ec_n1280_1hr" value="(1) (2) (3) (6)" /-->
+         <actionparam key="symbol_provider-ec_n1280_1hr" value="(1,0,1)" />
+         <actionparam key="symbol_provider-ec_n1280_3hr" value="(3,0,3)" />
+         <actionparam key="symbol_provider-ec_n1280_6hr" value="(6,0,6)" />
+         <actionparam key="output_params" value="dewpointTemperature" />
+         <actionparam key="symbols_enable_thunder" value="May-1/Oct-1" />
+         <version version="1.0" action="LocationForecast5" queryid="locationforecastenergy" >
+         </version>
+      
+      </request>
+   </requests>
+   
+   <querydefs>
+      <!-- locationforecast -->
+      <querydef id="locationforecastenergy" paralell="4">
+      <!-- 
+           Used to query a constant field. Ex a real topography field.
+           The query below is just an example. statkart.no is a high 
+           resolution topography field for Norway. 
+       --> 
+         <query>
+            dataprovider=statkart.no;
+            reftime=NULL;   <!-- NB NB NB NB -->
+            validtime=NULL; <!-- NB NB NB NB -->
+            parameter="altitude";
+         </query>
+	<query>
+            dataprovider=harmonie;
+            point_interpolation=bilinear;
+            reftime=${harmonie};
+            parameter="altitude"
+                     ,"air temperature";
+         </query>
+         <query>
+            dataprovider=harmonie;
+            point_interpolation=nearest;
+            reftime=${harmonie};
+            parameter="air pressure"
+                     ,"cloud area fraction"
+                     ,"cloud area fraction in atmosphere layer"
+                     ,"relative humidity"
+                     ,"x wind"
+                     ,"y wind"
+                     ,"wind speed"
+                     ,"wind direction"
+                     ,"global radiation"
+                     ,"precipitation amount"
+                     ,"high estimate of precipitation amount"
+                     ,"middle estimate of precipitation amount"
+                     ,"low estimate of precipitation amount"
+                     ,"probability of precipitation"
+                     ,"thunderstorm probability";
+         </query>
+         <query>
+            dataprovider=ec_n1280_1hr;
+            point_interpolation=bilinear;
+            reftime=${ec_n1280_1hr};
+            parameter="altitude" 
+                     ,"air temperature"
+                     ,"air pressure"
+                     ,"cloud area fraction"
+                     ,"cloud area fraction in atmosphere layer"
+                     ,"relative humidity"
+                     ,"x wind"
+                     ,"y wind"
+                     ,"global radiation"
+                     ,"precipitation amount"
+                     ,"high estimate of precipitation amount"
+                     ,"middle estimate of precipitation amount"
+                     ,"low estimate of precipitation amount"
+                     ,"probability of precipitation"
+                     ,"thunderstorm probability";
+         </query>
+
+         <query>
+            dataprovider=ec_n1280_3hr;
+            point_interpolation=bilinear;
+            reftime=${ec_n1280_3hr};
+            parameter="altitude" 
+                     ,"air temperature"
+                     ,"air pressure"
+                     ,"cloud area fraction"
+                     ,"cloud area fraction in atmosphere layer"
+                     ,"relative humidity"
+                     ,"x wind"
+                     ,"y wind"
+                     ,"global radiation"
+                     ,"precipitation amount"
+                     ,"high estimate of precipitation amount"
+                     ,"middle estimate of precipitation amount"
+                     ,"low estimate of precipitation amount"
+                     ,"probability of precipitation"
+                     ,"thunderstorm probability";
+         </query>
+
+         <query>
+            dataprovider=ec_n1280_6hr;
+            point_interpolation=bilinear;
+            reftime=${ec_n1280_6hr};
+            parameter="altitude" 
+                     ,"air temperature"
+                     ,"air pressure"
+                     ,"cloud area fraction"
+                     ,"cloud area fraction in atmosphere layer"
+                     ,"relative humidity"
+                     ,"x wind"
+                     ,"y wind"
+                     ,"global radiation"
+                     ,"precipitation amount"
+                     ,"high estimate of precipitation amount"
+                     ,"middle estimate of precipitation amount"
+                     ,"low estimate of precipitation amount"
+                     ,"probability of precipitation"
+                     ,"thunderstorm probability";
+         </query>
+
+      </querydef>
+   </querydefs>
+</wdb2ts>
