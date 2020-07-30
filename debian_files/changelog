@@ -1,3 +1,13 @@
+metno-wdb2ts (1.3.28d-1) unstable; urgency=low
+  * New parameter Wind multi-level
+  * Bugfix: Changed order of 'localhost' and 'wdb' db connections
+  * Bugfix: Added 'localhost' to wdb2ts db connection to account for podman rootless containers
+  * Corrected docker build instructions
+  * Added docker build environment
+  * Translated winds from Norwegian to English
+    
+ -- Conor Daly <conor.daly@met.ie>  Thu, 30 Jul 2020 15:00:00 +0100
+
 metno-wdb2ts (1.3.28c-1) unstable; urgency=low
   * New parameter globalRadiation (Conor Daly, Met Eireann).
   * Bugfix: LocationElem for precip probalility  (Conor Daly, Met Eireann).
