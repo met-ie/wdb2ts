@@ -66,7 +66,7 @@ dewPointTemperature( float temperature, float relativeHumidity );
  * |     1|Light air       |0,3-1,5  |1-3  |Direction shown by smoke drift but not by wind vanes.                                                                                     |
  * |     2|Light breeze    |1,6-3,3  |4-6  |Wind felt on face; leaves rustle; wind vane moved by wind.                                                                                |
  * |     3|Gentle breeze   |3,4-5,4  |7-10 |Leaves and small twigs in constant motion; light flags extended.                                                                          |
- * |     4|Moterate breeze |5,5-7,9  |11-16|Raises dust and loose paper; small branches moved.                                                                                        |
+ * |     4|Moderate breeze |5,5-7,9  |11-16|Raises dust and loose paper; small branches moved.                                                                                        |
  * |     5|Fresh breeze    |8,0-10,7 |17-21|Small trees in leaf begin to sway; crested wavelets form on inland waters.                                                                |
  * |     6|Strong breeze   |10,8-13,8|22-27|Large branches in motion; whistling heard in telegraph wires; umbrellas used with difficulty.                                             |
  * |     7|Near gale       |13,9-17,1|28-33|Whole trees in motion; inconvenience felt when walking against the wind.                                                                  |
